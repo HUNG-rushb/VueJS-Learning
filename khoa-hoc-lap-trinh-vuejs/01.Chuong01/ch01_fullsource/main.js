@@ -43,11 +43,13 @@ var vueInstance = new Vue({
       this.selectedProduct = index;
       // console.log(e, index, this);
     },
+
     classActive(index) {
       return {
         active: this.selectedProduct === index,
       };
     },
+
     handleAddToCart(e) {
       if (this.cardNumber + 1 > this.getProduct.quantity) {
         alert("So luong khong du");
@@ -57,6 +59,7 @@ var vueInstance = new Vue({
       console.log(e.target);
     },
   },
+
   computed: {
     formatOriginalPrice() {
       var number = this.price;
@@ -65,6 +68,7 @@ var vueInstance = new Vue({
         currency: "VND",
       }).format(number);
     },
+
     formatFinalPrice() {
       var number = this.price - this.sale * this.price;
       return new Intl.NumberFormat("de-DE", {
@@ -72,6 +76,7 @@ var vueInstance = new Vue({
         currency: "VND",
       }).format(number);
     },
+
     getProduct() {
       let index = this.selectedProduct;
       return this.listProductDetail[index];
